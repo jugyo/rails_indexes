@@ -217,7 +217,7 @@ module Indexer
   end
   
   def self.key_exists?(table,key_columns)     
-    result = (key_columns.to_a - ActiveRecord::Base.connection.indexes(table).map { |i| i.columns }.flatten)
+    result = ([key_columns].flatten - ActiveRecord::Base.connection.indexes(table).map { |i| i.columns }.flatten)
     result.empty?
   end
   
